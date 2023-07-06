@@ -1,0 +1,16 @@
+button{
+    background-color: transparent;
+    border: none; 
+}
+.cartWidget{
+    fill:white;
+    height: 40px;
+    width: 40px;
+    &:hover{
+    height:45px;
+    width:45px;
+    }
+}
+.productsQuantity{
+    color:azure;
+}

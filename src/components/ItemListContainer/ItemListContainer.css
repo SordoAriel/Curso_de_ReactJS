@@ -1,0 +1,12 @@
+.itemListContainer{
+    background-color: rgb(24, 54, 44);
+    .greetings{
+        height: 600px;
+        margin: 0;
+        color:azure;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
