@@ -1,0 +1,24 @@
+.itemCard{
+    width: 20%;
+    height: 70vh;
+    margin: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    border: 2px solid azure;
+    border-radius: 20px;
+    color:azure;
+    .itemCardImg{
+        width: 95%;
+        height: 30vh;
+        object-fit: cover;
+        border-radius: 20px;
+    }
+    .seeProductBtn{
+        background-color: azure;
+        padding: 10px;
+        font-size: 1.2rem;
+    }
+}

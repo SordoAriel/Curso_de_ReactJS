@@ -2,13 +2,11 @@ button{
     background-color: transparent;
     border: none; 
 }
-.cartWidget{
-    fill:white;
-    height: 40px;
-    width: 40px;
+.cartIcon{
+    color:azure;
+    font-size: 1.7rem;
     &:hover{
-    height:45px;
-    width:45px;
+    font-size: 1.8rem;
     }
 }
 .productsQuantity{

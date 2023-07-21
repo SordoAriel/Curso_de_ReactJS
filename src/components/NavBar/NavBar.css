@@ -6,7 +6,7 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    background-color: rgb(37, 39, 58);
+    background-color: rgb(36, 50, 34);
     .logo{
         height: 60px;
         object-fit: cover;
@@ -31,11 +31,11 @@
             align-items: center;
             border-radius: 5px;
             &:hover{
-                background-color: grey;
+                background-color: rgb(194, 194, 194);
             }
-            .searchButtonIcon{
-                height:30px;
-                width:30px;
+            .searchIcon{
+                font-size: 1.3rem;
+                color: grey;
             }
         }
     }

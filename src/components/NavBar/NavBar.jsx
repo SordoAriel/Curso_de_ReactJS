@@ -1,31 +1,29 @@
 import CartWidget from "../CartWidget/CartWidget";
 import "./NavBar.css";
 import logo from "./logo.png";
-import cartIcon from "./searchIcon.svg"
-
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import {faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons"
+import {Link} from "react-router-dom"
 function NavBar () {
     return (
       <nav className="navBarStyles" >
-        <img className="logo" src={logo} alt="Logo de Ferretería Ferros" />
+        <Link to="/"><img className="logo" src={logo} alt="Logo de Ferretería Ferros" /></Link>
         <form className="form">
           <input className="searchInput" type="name" placeholder="Buscar..."/>
-          <button className="searchButton" type="submit"><img className="searchButtonIcon" src={cartIcon} alt="Búsqueda"/></button>
+          <button className="searchButton" type="submit"><FontAwesomeIcon icon={faMagnifyingGlass} className="searchIcon"/></button>
         </form>
         <ul className="list">
           <li className="listItems">
-            <a class="link" href="./app.js">Nosotros</a>
+            <Link className="link" to="/categoría/Herramientas">Herramientas</Link>
           </li>
           <li className="listItems">
-            <a class="link" href="./app.js">Ofertas</a>
+            <Link className="link" to="/categoría/Electricidad">Electricidad</Link>
           </li>
           <li className="listItems">
-            <a class="link" href="./app.js">Electricidad</a>
+            <Link className="link" to="/categoría/Sanitarios">Sanitarios</Link>
           </li>
           <li className="listItems">
-            <a class="link" href="./app.js">Sanitarios</a>
-          </li>
-          <li className="listItems">
-            <a class="link" href="./app.js">Otros</a>
+            <Link className="link" to="/categoría/Seguridad">Seguridad</Link>
           </li>
         </ul>
         <CartWidget />
@@ -34,3 +32,4 @@ function NavBar () {
   }
 
   export default NavBar;
+

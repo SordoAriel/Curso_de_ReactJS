@@ -1,0 +1,19 @@
+.itemDetailCard{
+    width: 60%;
+    height: 90vh;
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    border: 2px solid azure;
+    border-radius: 20px;
+    color:azure;
+    .itemDetailImg{
+        width: 80%;
+        height: 60vh;
+        object-fit: cover;
+        border-radius: 20px;
+    }
+}
