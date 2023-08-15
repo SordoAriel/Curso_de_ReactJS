@@ -203,7 +203,7 @@ export function getCategoryData(categoryUrl) {
     });
 }
 
-function getData() {
+export function getData() {
     return new Promise( (resolve, reject) => {
         setTimeout( () => {
             resolve(products)
@@ -211,4 +211,4 @@ function getData() {
     })
 }
 
-export default getData;
+

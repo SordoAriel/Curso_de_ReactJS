@@ -1,5 +1,5 @@
 .itemDetailCard{
-    width: 60%;
+    width: 50%;
     height: 90vh;
     display: flex;
     margin: auto;
@@ -11,8 +11,8 @@
     border-radius: 20px;
     color:azure;
     .itemDetailImg{
-        width: 80%;
-        height: 60vh;
+        width: 70%;
+        height: 50vh;
         object-fit: cover;
         border-radius: 20px;
     }

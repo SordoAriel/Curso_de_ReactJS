@@ -1,36 +1,36 @@
 import { useState, useEffect } from "react";
-import "./ItemListContainer.css";
-import getData, {getCategoryData} from "../../services/asyncMock";
-import Item from "../Items/Item"
+import { getData, getCategoryData } from "../../services/asyncMock";
+import ItemList from "../ItemListContainer/ItemList"
 import { useParams } from "react-router-dom";
+import { DotPulse } from '@uiball/loaders'
 
 function ItemListContainer (props) {
     
     const [products, setProducts] = useState ([])
-
+    const [isLoading, setIsLoading] = useState(true);
     const {categoryId} = useParams();
-
-        async function requestProducts () {
-        let response = categoryId ? await getCategoryData(categoryId) : await getData();
-        setProducts(response)
-    }
     
     useEffect(
         () => {
+          setIsLoading(true)
+            async function requestProducts () {
+                let response = categoryId ? await getCategoryData(categoryId) : await getData();
+                setProducts(response)
+                setIsLoading(false)
+            }
             requestProducts();
         }, [categoryId]        
     )
 
-    return (
-        <>
-            <h2 className="greetings"> {props.greetings}</h2>
-            <div className="itemListContainer">
-                {products.map((item) => (
-                <Item key={item.id} {...item} />))}
-            </div>
-        </>
-        
-    )
+    if (isLoading) {
+        return <DotPulse size={40} speed={1.3} color="white"/>;
+      } else {
+        return products.length === 0 ? (
+          <p>No hay productos disponibles para esa consulta.</p>
+        ) : (
+          <ItemList products={products} />
+        );
+    }
 }
 
 export default ItemListContainer;
