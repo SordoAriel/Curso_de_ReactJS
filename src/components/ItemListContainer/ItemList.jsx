@@ -7,7 +7,7 @@ function ItemList(props){
 
     return(
     <>
-        <h2> Catálogo de productos:</h2>
+        <h2 style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}> Catálogo de productos:</h2>
         <div className="itemListContainer">
             {products.map((item) => (
             <Item key={item.id} {...item} />))}

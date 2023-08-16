@@ -10,7 +10,7 @@ function Item(props) {
         <h2>{name}</h2>
         <small>{description}</small>
         <h4>$ {price}</h4>
-        <Link to={`/producto/${id}}`}><button className="seeProductBtn">Ver producto</button></Link>
+        <Link to={`/producto/${id}`}><button className="seeProductBtn">Ver producto</button></Link>
 
       </div>
     );

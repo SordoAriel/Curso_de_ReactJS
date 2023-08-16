@@ -21,9 +21,7 @@ const firebaseConfig = {
   appId: "1:620432815179:web:a1d916e519a518b23f89ce"
 };
 
-
 const appFirebase = initializeApp(firebaseConfig);
-
 const db = getFirestore(appFirebase);
 
 async function getData() {
@@ -41,7 +39,6 @@ async function getData() {
 async function getProductData(id) {
   const docRef = doc(db, "products", id);
   const docSnapshot = await getDoc(docRef);
-
   if (docSnapshot.exists()) {
     return { ...docSnapshot.data(), id: docSnapshot.id };
   } else {
@@ -49,9 +46,9 @@ async function getProductData(id) {
   }
 }
 
-async function getCategoryData() {
+async function getCategoryData(categoryId) {
   const productsRef = collection(db, "products");
-  const q = query(productsRef, where("category", "==", "herramientas"));
+  const q = query(productsRef, where("category", "==", categoryId));
   const documentsSnapshot = await getDocs(q);
 
   const documents = documentsSnapshot.docs;
@@ -73,176 +70,201 @@ async function getOrder(id){
   return { ...docSnapshot.data(), id: docSnapshot.id };
 }
 
-async function _exportProducts(){
-  const productos = [
-    {
-      title: "Camiseta de fútbol",
-      id: 1,
-      stock: 0,
-      description: "Camiseta de fútbol de alta calidad",
-      img: "/assets/remera.bmp",
-      price: 300,
-      category: "indumentaria",
-    },
-    {
-      title: "Zapatillas de running",
-      id: 2,
-      stock: 8,
-      description: "Zapatillas de running para entrenamiento",
-      img: "/assets/zapatilla.bmp",
-      price: 200,
-      category: "calzado",
-    },
-    {
-      title: "Shorts de baloncesto",
-      id: 3,
-      stock: 3,
-      description: "Shorts transpirables para baloncesto",
-      img: "/assets/shorts.bmp",
-      price: 150,
-      category: "indumentaria",
-    },
-    {
-      title: "Pelota de tenis",
-      id: 4,
-      stock: 2,
-      description: "Pelota de tenis oficial",
-      img: "/assets/pelotatennis.bmp",
-      price: 150,
-      category: "indumentaria",
-    },
-    {
-      title: "Camiseta de fútbol",
-      id: 5,
-      limit: 5,
-      description: "Camiseta de fútbol de alta calidad",
-      img: "/assets/remera.bmp",
-      price: 50,
-      category: "indumentaria",
-    },
-    {
-      title: "Zapatillas de running",
-      id: 6,
-      stock: 8,
-      description: "Zapatillas de running para entrenamiento",
-      img: "/assets/zapatilla.bmp",
-      price: 700,
-      category: "calzado",
-    },
-    {
-      title: "Shorts de baloncesto",
-      id: 7,
-      stock: 3,
-      description: "Shorts transpirables para baloncesto",
-      img: "/assets/shorts.bmp",
-      price: 250,
-      category: "indumentaria",
-    },
-    {
-      title: "Pelota de tenis",
-      id: 8,
-      stock: 2,
-      description: "Pelota de tenis oficial",
-      img: "/assets/pelotatennis.bmp",
-      price: 350,
-      category: "indumentaria",
-    },
-  ];
-
-  for(let item of productos){   
-    const collectionRef = collection(db, "products")
-    const docCreated = await addDoc(collectionRef, item);
-    console.log("Doc created with id:", docCreated.id)
-  }
-}
-
 async function _exportProductsWithBatch(){
-  const productos = [
+  const products = [
     {
-      title: "Camiseta de fútbol",
-      id: 1,
-      stock: 0,
-      description: "Camiseta de fútbol de alta calidad",
-      img: "/assets/remera.bmp",
-      price: 300,
-      category: "indumentaria",
+    id: 1,
+    name: "Taladro",
+    description: "Black & Decker 750W 13mm",
+    stock: 5,
+    price: 10000,
+    img: "https://arcencohogar.vtexassets.com/arquivos/ids/326786-800-800?v=637944543478700000&width=800&height=800&aspect=true",
+    category: "Herramientas"
     },
     {
-      title: "Zapatillas de running",
-      id: 2,
-      stock: 8,
-      description: "Zapatillas de running para entrenamiento",
-      img: "/assets/zapatilla.bmp",
-      price: 200,
-      category: "calzado",
+    id: 2,
+    name: "Taladro",
+    description: " Black & Decker 500W 10mm ",
+    stock: 6,
+    price: 8000,
+    img: "https://arcencohogar.vtexassets.com/arquivos/ids/326813-800-800?v=637944557575900000&width=800&height=800&aspect=true",
+    category: "Herramientas"
     },
     {
-      title: "Shorts de baloncesto",
-      id: 3,
-      stock: 3,
-      description: "Shorts transpirables para baloncesto",
-      img: "/assets/shorts.bmp",
-      price: 150,
-      category: "indumentaria",
+    id: 3,
+    name: "Taladro",
+    description: " De Walt 1100W 13mm ",
+    stock: 4,
+    price: 20000,
+    img: "https://arcencohogar.vtexassets.com/arquivos/ids/327004-800-800?v=637944633492330000&width=800&height=800&aspect=true",
+    category: "Herramientas"
     },
     {
-      title: "Pelota de tenis",
-      id: 4,
-      stock: 2,
-      description: "Pelota de tenis oficial",
-      img: "/assets/pelotatennis.bmp",
-      price: 150,
-      category: "indumentaria",
+    id: 4,
+    name: "Amoladora",
+    description: " Black & Decker 1100W disco 4,5mm ",
+    stock: 10,
+    price: 13000,
+    img: "https://arcencohogar.vtexassets.com/arquivos/ids/326858-800-800?v=637944572543170000&width=800&height=800&aspect=true",
+    category: "Herramientas"
     },
     {
-      title: "Camiseta de fútbol",
-      id: 5,
-      limit: 5,
-      description: "Camiseta de fútbol de alta calidad",
-      img: "/assets/remera.bmp",
-      price: 50,
-      category: "indumentaria",
+    id: 5,
+    name: "Amoladora",
+    description: " DeWalt 1800W disco 7mm ",
+    stock: 5,
+    price: 30000,
+    img: "https://arcencohogar.vtexassets.com/arquivos/ids/326859-800-800?v=637944573201870000&width=800&height=800&aspect=true",
+    category: "Herramientas"
     },
     {
-      title: "Zapatillas de running",
-      id: 6,
-      stock: 8,
-      description: "Zapatillas de running para entrenamiento",
-      img: "/assets/zapatilla.bmp",
-      price: 700,
-      category: "calzado",
+    id: 6,
+    name: "Mascara Fotosensible",
+    description: "Lusqtoff St-mistery Automatica",
+    stock: 12,
+    price: 10000,
+    img: "https://arcencohogar.vtexassets.com/arquivos/ids/273945-800-800?v=637651579020700000&width=800&height=800&aspect=true",
+    category: "Seguridad"
     },
     {
-      title: "Shorts de baloncesto",
-      id: 7,
-      stock: 3,
-      description: "Shorts transpirables para baloncesto",
-      img: "/assets/shorts.bmp",
-      price: 250,
-      category: "indumentaria",
+    id: 7,
+    name: "Juego de llaves tubo",
+    description: "1/2 pulgada 13 piezas marca Bremen",
+    stock: 10,
+    price: 29000,
+    img: "https://arcencohogar.vtexassets.com/arquivos/ids/325140-800-800?v=637926405828400000&width=800&height=800&aspect=true",
+    category: "Herramientas"
     },
     {
-      title: "Pelota de tenis",
-      id: 8,
-      stock: 2,
-      description: "Pelota de tenis oficial",
-      img: "/assets/pelotatennis.bmp",
-      price: 350,
-      category: "indumentaria",
+    id: 8,
+    name: "Cadena de seguridad",
+    description: "Acero Cementado 3/8 X 1 M Bulit + Candado 72mm",
+    stock: 8,
+    price: 31000,
+    img: "https://arcencohogar.vtexassets.com/arquivos/ids/314999-800-800?v=637807934633430000&width=800&height=800&aspect=true",
+    category: "Seguridad"
     },
-  ];
+    {
+    id: 9,
+    name: "Cartucho Gas Butano",
+    description: "Pack X 4 u.Descartable 227gr p/ anafe tipo camping",
+    stock: 42,
+    price: 4000,
+    img: "https://arcencohogar.vtexassets.com/arquivos/ids/273527-800-800?v=637651576418400000&width=800&height=800&aspect=true",
+    category: "Seguridad"
+    },
+    {
+    id: 10,
+    name: "Barbijo",
+    description: "Respirador Mascarilla N95 3m X 5 Unidades",
+    stock: 130,
+    price: 3500,
+    img: "https://arcencohogar.vtexassets.com/arquivos/ids/340727-800-800?v=638091342331400000&width=800&height=800&aspect=true",
+    category: "Seguridad"
+    },
+    {
+    id: 11,
+    name: "Lámpara",
+    description: "Osram Led 11W equivalente a 75W luz cálida",
+    stock: 200,
+    price: 350,
+    img: " https://http2.mlstatic.com/D_NQ_NP_2X_738284-MLA42089185025_062020-F.webp",
+    category: "Electricidad"
+    },
+    {
+    id: 12,
+    name: "Cable",
+    description: "Unipolar Marrón 2,5mm normalizado precio x metro",
+    stock: 400,
+    price: 180,
+    img: "https://arcencohogar.vtexassets.com/arquivos/ids/279360-800-800?v=637651614147870000&width=800&height=800&aspect=true",
+    category: "Electricidad"
+    },
+    {
+    id: 13,
+    name: "Cable",
+    description: "Unipolar Celeste 2,5mm normalizado precio x metro",
+    stock: 400,
+    price: 180,
+    img: "https://arcencohogar.vtexassets.com/arquivos/ids/279359-800-800?v=637651614143630000&width=800&height=800&aspect=true",
+    category: "Electricidad"
+    },
+    {
+    id: 14,
+    name: "Llave embutir 2 tomas",
+    description: "Marca Jeluz modelo Mito",
+    stock: 20,
+    price: 800,
+    img: "https://arcencohogar.vtexassets.com/arquivos/ids/287781-800-800?v=637651664507900000&width=800&height=800&aspect=true",
+    category: "Electricidad"
+    },
+    {
+    id: 15,
+    name: "Lámpara",
+    description: "Osram Led 11W equivalente a 75W luz fría",
+    stock: 450,
+    price: 350,
+    img: "https://http2.mlstatic.com/D_NQ_NP_2X_643268-MLU69294788555_052023-F.webp",
+    category: "Electricidad"
+    },
+    {
+    id: 16,
+    name: "Flexible",
+    description: "Mallado 1/2 x 40cm",
+    stock: 25,
+    price: 1000,
+    img: "https://arcencohogar.vtexassets.com/arquivos/ids/325854-800-800?v=637933085095100000&width=800&height=800&aspect=true",
+    category: "Sanitarios"
+    },
+    {
+    id: 17,
+    name: "Flexible",
+    description: "Cobre 1/2 x 40cm",
+    stock: 12,
+    price: 2400,
+    img: "https://arcencohogar.vtexassets.com/arquivos/ids/326325-800-800?v=637940968410030000&width=800&height=800&aspect=true",
+    category: "Sanitarios"
+    },
+    {
+    id: 18,
+    name: "Sopapa",
+    description: "plástica 1 1/2 pulgadas sujeción a presión",
+    stock: 40,
+    price: 450,
+    img: "https://arcencohogar.vtexassets.com/arquivos/ids/284842-800-800?v=637651648826570000&width=800&height=800&aspect=true",
+    category: "Sanitarios"
+    },
+    {
+    id: 19,
+    name: "Valvula",
+    description: "con cuerito de goma 1/2''",
+    stock: 200,
+    price: 200,
+    img: "https://arcencohogar.vtexassets.com/arquivos/ids/347942-800-800?v=638149327549700000&width=800&height=800&aspect=true",
+    category: "Sanitarios"
+    },
+    {
+    id: 20,
+    name: "Tornillos para inodoro",
+    description: "plásticos, para tapa de madera, modelo universal",
+    stock: 100,
+    price: 550,
+    img: "https://arcencohogar.vtexassets.com/arquivos/ids/322670-800-800?v=637877945319330000&width=800&height=800&aspect=true",
+    category: "Sanitarios"
+    }    
+]
 
   const batch = writeBatch(db); 
 
-  productos.forEach( producto => {
-    const newId = producto.id
-    delete producto.id;
+  products.forEach( product => {
+    const newId = product.id
+    delete product.id;
     const newDoc = doc(db, "products", `1${newId}`)
-    batch.set(newDoc, producto);    
+    batch.set(newDoc, product);    
   })
 
   const data = await batch.commit()  
   console.log("Listo!", data)
 }
 
-export { getData, getCategoryData, getProductData};
+export { getData, getOrder, getProductData, getCategoryData, createOrder, _exportProductsWithBatch};

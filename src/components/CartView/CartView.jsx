@@ -4,9 +4,10 @@ import { cartContext } from "../../context/cartContext";
 import "./CartView.css"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faTrashCan} from "@fortawesome/free-solid-svg-icons"
+import { Link } from "react-router-dom";
 
 function CartView() {
-    const { cart, removeItem, getTotalPriceInCart } = useContext(cartContext);
+    const { cart, removeItem, getTotalPriceInCart, clearCart } = useContext(cartContext);
   
     return (
       <div>
@@ -31,8 +32,8 @@ function CartView() {
               Monto total a pagar: ${getTotalPriceInCart()}
             </h2>
             <div className="btnContainer">
-                <button className="cartBtn">Vaciar carrito</button>
-                <button className="cartBtn">Finalizar compra</button>
+                <button className="cartBtn" onClick={clearCart}>Vaciar carrito</button>
+                <Link to="/checkout"><button className="cartBtn">Ir a finalizar compra</button></Link>
             </div>
           </div>
         )}
