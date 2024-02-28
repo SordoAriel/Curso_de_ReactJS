@@ -18,17 +18,18 @@ function Checkout() {
   async function handleCheckout(evt) {
     evt.preventDefault();
     const orderData = {
+      id: Math.random() * 100000000,
       items: cart,
-      buyer: buyer,
+      buyer: buyer.firstname + ' ' + buyer.lastname,
       date: new Date(),
       total: getTotalPriceInCart(),
     };
 
     try {
-      const idOrder = await createOrder(orderData);
+      await createOrder(orderData);
       Swal.fire(
-        '¡Gracias por tu compra!',
-        `Tu numero de orden es ${idOrder}`,
+        `¡Gracias por tu compra ${orderData.buyer}!`,
+        `Tu numero de orden es ${orderData.id}`,
         'success'
       );
       navigate(`/`);

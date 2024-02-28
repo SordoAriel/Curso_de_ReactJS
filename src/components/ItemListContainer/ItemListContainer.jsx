@@ -12,7 +12,6 @@ function ItemListContainer (props) {
     
     useEffect(
         () => {
-          
             async function requestProducts () {
                 let response = categoryId ? await getCategoryData(categoryId) : await getData();
                 setProducts(response)

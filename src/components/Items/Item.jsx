@@ -2,7 +2,7 @@ import {Link} from "react-router-dom";
 import "./Item.css";
 
 function Item(props) {
-    const { id, name, description, stock, price, img } = props;
+    const { id, name, description, price, img } = props;
   
     return (
       <div className="itemCard">

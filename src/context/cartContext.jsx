@@ -10,21 +10,8 @@ function CartContextProvider(props) {
         const newItemInCart = {quantity, ...product}
         newCart.push(newItemInCart)
         setCart(newCart)
-       /* if (isInCart(product.id)) {
-          const indexUpdate = cart.findIndex((item) => item.id === product.id);
-          newCart[indexUpdate].quantity += quantity;
-          setCart(newCart);
-        } else {
-          const newItemInCart = { ...product, quantity };
-          newCart.push(newItemInCart);
-          setCart(newCart);
-        }*/
       }
-
-      /*function isInCart(id) {
-        return cart.some((item) => item.id === id);
-      }*/
-    
+      
       function getItemInCart(id) {
         return cart.find((item) => item.id === id);
       }
@@ -58,7 +45,6 @@ function CartContextProvider(props) {
           value={{
             getItemInCart,
             cart,
-            //prueba,
             addToCart,
             removeItem,
             clearCart,
