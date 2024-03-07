@@ -6,7 +6,7 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    background-color: rgb(36, 50, 34);
+    background: linear-gradient(90deg,#28382e 0%, #043204 80%);
     .logo{
         height: 60px;
         object-fit: cover;

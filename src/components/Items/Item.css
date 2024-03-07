@@ -2,6 +2,7 @@
     width: 20%;
     height: 70vh;
     margin: 15px;
+    gap: 5px;
     display: flex;
     flex-direction: column;
     justify-content: center;

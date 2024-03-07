@@ -1,5 +1,5 @@
 import {useState, useEffect, useContext} from "react"
-import { getProductData } from "../../services/firebase";
+import { getProductData } from "../../services/server";
 import ItemDetail from "../ItemDetailContainer/ItemDetail";
 import {useParams} from "react-router-dom"
 import { cartContext } from "../../context/cartContext";

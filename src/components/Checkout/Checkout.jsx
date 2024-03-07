@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { cartContext } from "../../context/cartContext";
-import { createOrder } from "../../services/firebase";
+import { createOrder } from "../../services/server";
 import { useContext, useState } from "react";
 import Swal from 'sweetalert2'
 import "./Checkout.css"

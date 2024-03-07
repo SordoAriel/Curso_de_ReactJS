@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getData, getCategoryData } from "../../services/firebase";
+import { getData, getCategoryData } from "../../services/server";
 import ItemList from "../ItemListContainer/ItemList"
 import { useParams } from "react-router-dom";
 import { DotPulse } from '@uiball/loaders'

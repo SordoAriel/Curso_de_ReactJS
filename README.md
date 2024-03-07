@@ -1,6 +1,6 @@
 # Aplicación de React.JS para la creación del Front-End de un Ecommece
 
-Esto proyecto fue creado en el marco del curso de React.JS que realicé en CoderHouse.
+Este proyecto fue creado en el marco del curso de React.JS que realicé en CoderHouse.
 
 El objetivo principal era incorporar los fundamentos de React.
 
@@ -28,6 +28,6 @@ La navegabilidad fue trabajada a través de rutas, con el módulo react-router-d
 
 ## Aclaraciones
 
-La aplicación se correra en el modo de desarrollo(dev) en el puerto 3000, en el siguiente enlace:
+La aplicación se correra en el modo de desarrollo (dev) en el puerto 3000, en el siguiente enlace:
 
 ### [http://localhost:3000]
